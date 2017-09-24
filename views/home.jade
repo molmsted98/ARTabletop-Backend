@@ -1,0 +1,167 @@
+extends layout
+
+block content
+  .container-fluid
+    if messages.error
+      .alert.alert-danger(role='alert')
+        for error in messages.error
+          div= error.msg
+    if messages.success
+      .alert.alert-success(role='alert')
+        for success in messages.success
+          div= success.msg
+    if messages.info
+      .alert.alert-info(role='alert')
+        for info in messages.info
+          div= info.msg
+
+    .row
+      .col-sm-4
+        .panel
+          .panel-body
+            .page-header
+            h2
+                | New User
+            form.form-horizontal(id='create-form' method='POST')
+                input(type='hidden', name='_csrf', value=_csrf)
+                input(type='hidden', name='action', value=0)
+                .form-group
+                    label.col-sm-3.control-label(for='name') Username
+                    .col-sm-7
+                        input.form-control(type='text', name='name', id='name', placeholder='Username', required)
+                    label.col-sm-3.control-label(for='admin') Is Admin?
+                        input.form-control(type='checkbox', name='admin' id='admin')
+                .form-group
+                    button.btn.btn-primary(type='submit')
+                        i.fa.fa-pencil
+                        | Create User
+      .col-sm-4
+        .panel
+          .panel-body
+            .page-header
+            h2
+                | New Campaign
+            form.form-horizontal(id='create-form' method='POST')
+                input(type='hidden', name='_csrf', value=_csrf)
+                input(type='hidden', name='action', value=1)
+                .form-group
+                    label.col-sm-3.control-label(for='name') Name
+                    .col-sm-7
+                        input.form-control(type='text', name='name', id='name', placeholder='Name', required)
+                .form-group
+                    label.col-sm-3.control-label(for='admin') Admin Username
+                    .col-sm-7
+                        input.form-control(type='text', name='admin', id='admin', placeholder='Admin Username', required)
+                .form-group
+                    button.btn.btn-primary(type='submit')
+                        i.fa.fa-pencil
+                        | Create Campaign
+      .col-sm-4
+        .panel
+          .panel-body
+            .page-header
+            h2
+                | Add a user
+            form.form-horizontal(id='create-form' method='POST')
+                input(type='hidden', name='_csrf', value=_csrf)
+                input(type='hidden', name='action', value=2)
+                .form-group
+                    label.col-sm-3.control-label(for='name') Username
+                    .col-sm-7
+                        input.form-control(type='text', name='name', id='name', placeholder='Username', required)
+                .form-group
+                    label.col-sm-3.control-label(for='campaignId') Campaign Id
+                    .col-sm-7
+                        input.form-control(type='text', name='campaignId', id='campaignId', placeholder='Campaign Id', required)
+                .form-group
+                    button.btn.btn-primary(type='submit')
+                        i.fa.fa-pencil
+                        | Add User
+    .row
+      .col-sm-4
+        .panel
+          .panel-body
+            .page-header
+            h2
+                | Add a character
+            form.form-horizontal(id='create-form' method='POST')
+                input(type='hidden', name='_csrf', value=_csrf)
+                input(type='hidden', name='action', value=3)
+                .form-group
+                    label.col-sm-3.control-label(for='name') Username
+                    .col-sm-7
+                        input.form-control(type='text', name='name', id='name', placeholder='Username', required)
+                .form-group
+                    label.col-sm-3.control-label(for='campaignId') Character Name
+                    .col-sm-7
+                        input.form-control(type='text', name='charName', id='charName', placeholder='Character Name', required)
+                .form-group
+                    button.btn.btn-primary(type='submit')
+                        i.fa.fa-pencil
+                        | Add Character
+      .col-sm-4
+        .panel
+          .panel-body
+            .page-header
+            h2
+                | Update a character
+            form.form-horizontal(id='create-form' method='POST')
+                input(type='hidden', name='_csrf', value=_csrf)
+                input(type='hidden', name='action', value=4)
+                .form-group
+                    label.col-sm-3.control-label(for='charId') Character Id
+                    .col-sm-7
+                        input.form-control(type='text', name='charId', id='charId', placeholder='Character Id', required)
+                .form-group
+                    label.col-sm-3.control-label(for='x') X Location
+                    .col-sm-7
+                        input.form-control(type='number', name='x', id='x', placeholder='X Location', required)
+                .form-group
+                    label.col-sm-3.control-label(for='z') Z Location
+                    .col-sm-7
+                        input.form-control(type='number', name='z', id='z', placeholder='Z Location', required)
+                .form-group
+                    label.col-sm-3.control-label(for='health') Health
+                    .col-sm-7
+                        input.form-control(type='number', name='health', id='health', placeholder='Health', required)
+                .form-group
+                    label.col-sm-3.control-label(for='movement') Movement
+                    .col-sm-7
+                        input.form-control(type='number', name='movement', id='movement', placeholder='Movement', required)
+                .form-group
+                    button.btn.btn-primary(type='submit')
+                        i.fa.fa-pencil
+                        | Update
+      .col-sm-4
+        .panel
+          .panel-body
+            .page-header
+            h2
+                | Add a Wall
+            form.form-horizontal(id='create-form' method='POST')
+                input(type='hidden', name='_csrf', value=_csrf)
+                input(type='hidden', name='action', value=5)
+                .form-group
+                    label.col-sm-3.control-label(for='campaignId') Campaign Id
+                    .col-sm-7
+                        input.form-control(type='text', name='campaignId', id='campaignId', placeholder='Campaign Id', required)
+                .form-group
+                    label.col-sm-3.control-label(for='startXCoord') Start X Coord
+                    .col-sm-7
+                        input.form-control(type='text', name='startX', id='startX', placeholder='Start X Coord', required)
+                .form-group
+                    label.col-sm-3.control-label(for='startZCoord') Start Z Coord
+                    .col-sm-7
+                        input.form-control(type='text', name='startZ', id='startZ', placeholder='Start Z Coord', required)
+                .form-group
+                    label.col-sm-3.control-label(for='endXCoord') End X Coord
+                    .col-sm-7
+                        input.form-control(type='text', name='endX', id='endX', placeholder='End X Coord', required)
+                .form-group
+                    label.col-sm-3.control-label(for='endZ') End Z Coord
+                    .col-sm-7
+                        input.form-control(type='text', name='endZ', id='endZ', placeholder='End Z Coord', required)
+                .form-group
+                    button.btn.btn-primary(type='submit')
+                        i.fa.fa-pencil
+                        | Add Wall
